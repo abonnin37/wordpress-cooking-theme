@@ -1,0 +1,787 @@
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+
+    0. 	CSS Reset
+	1. 	Navigation
+	2.  Recipe Card
+	3.  Single Recipe
+	4.  Accordion Filter
+	5.  Special Regime Filter
+	6.  Search ingredients Filter
+	7. 	Filter General Style
+	8. 	Pagination
+	X. 	Default
+
+----------------------------------------------------------------------------- */
+
+
+/* -------------------------------------------------------------------------- */
+
+/*	0. CSS Reset
+/* -------------------------------------------------------------------------- */
+
+
+html,
+body {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+*{
+    outline:0;
+    min-height: 0;
+    min-width: 0;
+    box-sizing: border-box;
+    margin: 0;
+    border: none;
+}
+
+blockquote::before,
+blockquote::after {
+    content: "";
+}
+
+/* -------------------------------------------------------------------------- */
+
+/*	1. Navigation
+/* -------------------------------------------------------------------------- */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+    background-color: white;
+    /*box-shadow: 0 4px 8px 2px rgb(40 40 40 / 20%);*/
+}
+
+.navbar-link {
+    height: 60px;
+    text-decoration: none;
+}
+
+.navbar-logo {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.navbar-title {
+    font-family: 'La Belle Aurore', cursive;
+    font-size: 65px;
+    color: black;
+}
+
+/* -------------------------------------------------------------------------- */
+/*	2. Recipe Card
+/* -------------------------------------------------------------------------- */
+.permalink {
+    text-decoration: none;
+    color: inherit;
+}
+
+.permalink:hover {
+    color: inherit;
+}
+
+.recipe-card {
+    display: grid;
+    grid-template-rows: 200px 45px auto;
+}
+
+.recipe-card:hover {
+    cursor: pointer;
+}
+
+.recipe-card-image {
+    grid-area: 1 / 1 / 3 / 2;
+}
+
+.recipe-card-image img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 45px 45px 0 0;
+}
+
+.recipe-card-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    grid-area: 1 / 1 / 3 / 2;
+    position: relative;
+    opacity: 0;
+
+    transition: opacity 0.3s;
+}
+
+.recipe-card:hover .recipe-card-overlay {
+    opacity: 1;
+}
+
+.recipe-card-overlay .overlay-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 45px 45px 0 0;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.recipe-card-overlay .overlay-text {
+    margin-bottom: 45px;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    transform: scale(1.5);
+
+    transition: all 0.3s;
+}
+
+.recipe-card:hover .recipe-card-overlay .overlay-text {
+    transform: scale(1);
+}
+
+.recipe-card-content {
+    grid-area: 2 / 1 / 4 / 2;
+    background-color: white;
+    border-radius: 45px 0 45px 0;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    box-shadow: 0 6px 6px -4px rgb(40 40 40 / 20%);
+    z-index: 20;
+
+    transition: all 0.3s;
+}
+
+.recipe-card:hover .recipe-card-content {
+    transform: translateY(-10px);
+    box-shadow: 0 9px 9px -3px rgb(40 40 40 / 15%)
+}
+
+.recipe-category-icon {
+    height: 30px;
+    width: 30px;
+    margin-right: 20px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-size: 30px;
+}
+
+.recipe-time-group {
+    display: flex;
+    gap: 10px;
+}
+
+.recipe-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* -------------------------------------------------------------------------- */
+/*	3. Single Recipe
+/* -------------------------------------------------------------------------- */
+.single-recipe-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.single-recipe {
+    display: grid;
+    grid-template-rows: 400px 45px auto;
+    max-width: 800px;
+    width: 100%;
+    margin-top: 45px;
+}
+
+.single-recipe-image {
+    grid-area: 1 / 1 / 3 / 2;
+    position: relative;
+}
+
+.single-recipe-image img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 45px 45px 0 0;
+}
+
+.single-recipe-homepage-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150px;
+    height: 45px;
+    padding-left: 15px;
+    border-radius: 45px 0 20px 0;
+
+    color: white;
+    background-color: rgba(0,0,0,0.6);
+    cursor: pointer;
+    opacity: 0.7;
+    box-shadow: none;
+
+    transition: all 0.3s ease;
+}
+
+.single-recipe-homepage-btn:hover {
+    opacity: 1;
+    box-shadow: 3px 4px 6px rgb(0 0 0 / 20%);
+}
+
+.single-recipe-header {
+    grid-area: 2 / 1 / 4 / 2;
+    background-color: white;
+    border-radius: 45px 0 45px 0;
+    display: flex;
+    align-items: center;
+    padding: 30px;
+    z-index: 20;
+}
+
+.single-recipe .recipe-category-icon {
+    height: 50px;
+    width: 50px;
+    font-size: 50px;
+    margin-right: 30px;
+}
+
+.single-recipe .recipe-time-group {
+    flex-direction: column;
+}
+
+.single-recipe .recipe-time {
+    display: flex;
+}
+
+.single-recipe .recipe-time > i {
+    width: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px;
+}
+
+.single-recipe .recipe-time > span {
+    margin-right: 5px;
+}
+
+.ingredients-header, .instructions-header, .notes-header  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 0;
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.ingredients-header:before, .instructions-header:before, .notes-header:before {
+    content: " ";
+    border-bottom: 1px solid black;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    z-index: 10;
+}
+
+.ingredients-title, .instructions-title, .notes-title {
+    font-size: 25px;
+    padding: 0 30px;
+    background-color: white;
+    z-index: 20;
+}
+
+.ingredients-quantity {
+    font-style: italic;
+}
+
+.ingredients-group, .instructions-group {
+    margin-bottom: 20px;
+}
+
+.ingredients-group-name, .instructions-group-name {
+    text-transform: uppercase;
+    color: gray;
+    margin-bottom: 10px;
+}
+
+.instructions-time-group {
+    border: 1px solid black;
+    border-bottom: 0;
+    border-radius: 25px 25px 0 0;
+}
+
+.instructions-time-group .total-time {
+    padding: 5px 10px;
+    border-radius: 25px 25px 0 0;
+    box-shadow: 0 4px 0 rgb(40 40 40 / 20%);
+}
+
+.instructions-time-group .detail-time {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 10px;
+}
+
+.single-recipe-footer {
+    border-radius: 0 0 45px 45px;
+    height: 45px;
+    border: 1px solid rgb(40 40 40 / 30%);
+    border-top: none;
+    margin: 30px 0 50px 0;
+    box-shadow: 0 6px 6px rgb(40 40 40 / 20%)
+}
+
+/* -------------------------------------------------------------------------- */
+/*	4. Accordion Filter
+/* -------------------------------------------------------------------------- */
+.accordion-item {
+    border: none;
+}
+
+.accordion-header {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+}
+
+.accordion-button {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    padding: 0;
+}
+
+.filter-btn-container {
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid black;
+    background-color: black;
+    color: white;
+    transition: 0.3s background-color, 0.3s color;
+    font-size: 14px;
+}
+
+.filter-btn-container i {
+    margin-right: 6px;
+}
+
+.accordion-button.collapsed .filter-btn-container {
+    background-color: white;
+    color: black;
+}
+
+.accordion-button.collapsed .filter-btn-container:hover, .accordion-button:hover .filter-btn-container{
+    background-color: black;
+    color: white;
+}
+
+.accordion-button:after {
+    display: none;
+}
+
+.accordion-button:not(.collapsed) {
+    color: inherit;
+    background-color: inherit;
+    box-shadow: inherit;
+}
+
+.accordion-button:focus {
+    border-color: inherit;
+    box-shadow: inherit;
+}
+
+.resetBtn {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(100% + 15px);
+    height: 100%;
+    overflow: hidden;
+    opacity: 0;
+
+    font-size: 14px;
+    font-weight: normal;
+
+    transition: opacity 0.3s ease;
+}
+
+.resetBtn.show {
+    opacity: 1;
+}
+
+.resetBtn .resetBtnGroup {
+    display: flex;
+    align-items: center;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.resetBtn.show .resetBtnGroup {
+    transform: translateX(0);
+    cursor: pointer;
+}
+
+.resetBtn span {
+    text-decoration: underline;
+}
+
+.resetBtn:hover span {
+    text-decoration: none;
+}
+
+.resetBtn i {
+    margin-left: 8px;
+    transform-origin: center;
+    transition: none;
+}
+
+.resetBtn:hover i {
+    transform: rotate(-360deg);
+    transition: transform 0.5s ease;
+}
+
+/* -------------------------------------------------------------------------- */
+/*	5. Special Regime Filter
+/* -------------------------------------------------------------------------- */
+.special-regime-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.special-regime-item-list {
+    display: flex;
+    flex-wrap: wrap;
+    place-content: center left;
+    align-items: center;
+}
+
+.special-regime-item {
+    margin: 10px;
+    padding: 10px;
+    color: rgb(54, 47, 46);
+    font-size: 16px;
+    border: 1px solid white;
+    border-radius: 15px;
+    outline: 0;
+    box-shadow: rgb(0 0 0 / 13%) 1px 2px 9px 0;
+
+    transition: 0.3s border, 0.3s box-shadow;
+}
+
+.special-regime-item:nth-child(1) {
+    margin-left: 0;
+}
+
+.special-regime-item[data-checked="checked"] {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    box-shadow: rgb(0 0 0 / 13%) 1px 2px 9px 0;
+}
+
+.special-regime-item:hover, .special-regime-item label {
+    cursor: pointer;
+}
+
+.special-regime-item:hover {
+    box-shadow: rgb(0 0 0 / 25%) 1px 2px 15px 0;
+}
+
+.special-regime-item i {
+    margin-right: 0;
+    width: 0;
+    color: white;
+    transform: scaleX(0);
+    transition: width 0.5s cubic-bezier(0.62, 0.58, 0.16, 1), margin-right 0.5s cubic-bezier(0.62, 0.58, 0.16, 1), color 0.2s cubic-bezier(0.62, 0.58, 0.16, 1), transform 0.5s cubic-bezier(0.62, 0.58, 0.16, 1);
+}
+
+.special-regime-item[data-checked="checked"] i {
+    margin-right: 4px;
+    width: 14px;
+    color: inherit;
+    transform: scaleX(1);
+}
+
+/* -------------------------------------------------------------------------- */
+/*	6. Search Ingredients Filter
+/* -------------------------------------------------------------------------- */
+.ingredients-container {
+
+}
+
+.ingredients-label {
+    display: flex;
+    align-items: center;
+    min-width: 220px;
+}
+
+.ingredients-label label{
+    cursor: pointer;
+}
+
+.ingredients-input-container > div {
+    position: relative;
+}
+
+#ingredient-list {
+    position: absolute;
+    top: calc(100% + 15px);
+    left: 0;
+    right: 0;
+    background-color: white;
+    border-radius: 5px;
+    font-family: sans-serif;
+    padding: 5px;
+    box-shadow: rgb(0 0 0 / 13%) 1px 2px 9px 0px;
+    z-index: 1100;
+}
+
+#ingredient-list::before {
+    content: ' ';
+    z-index: 1000;
+    position: absolute;
+    top: 0;
+    left: 20px;
+    transform: translate(0, -11px) rotate(45deg);
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    box-shadow: -2px -2px 5px 0px rgb(0 0 0 / 5%);
+}
+
+#ingredient-list option {
+    background-color: white;
+    border-bottom: 1px solid rgb(0 0 0 / 5%);
+    padding: 4px;
+    margin-bottom: 1px;
+    font-size: 16px;
+    cursor: pointer;
+
+    transition: 0.3s padding-left;
+}
+
+#ingredient-list option:hover {
+    padding-left: 15px;
+}
+
+#ingredient-list option:nth-last-child(1) {
+    border-bottom: none;
+}
+
+.ingredients-terms-list {
+    list-style-type: none;
+    padding-left: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.ingredient-term {
+    margin: 5px;
+    padding: 5px 30px 5px 10px;
+    color: rgb(54, 47, 46);
+    font-size: 14px;
+    border: 1px solid white;
+    border-radius: 25px;
+    outline: 0;
+    box-shadow: rgb(0 0 0 / 13%) 1px 2px 9px 0;
+    position: relative;
+}
+
+.ingredient-term-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ingredient-term-close i {
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 50%;
+    height: 17px;
+    width: 17px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1px;
+
+    transition: 0.3s background-color, 0.3s color;
+}
+
+.ingredient-term-close i:hover {
+    background-color: rgb(54, 47, 46);
+    color: white;
+}
+
+.spinner-container {
+    z-index: 1100;
+}
+
+.spinner-element {
+    margin: 5px 8px;
+}
+
+.ingredient-error-message-container {
+    margin-left: 5px;
+}
+/* -------------------------------------------------------------------------- */
+/*	7. Filter General Style
+/* -------------------------------------------------------------------------- */
+#searchbox-main-input-container {
+    position: relative;
+}
+#searchbox-main-input-container:after {
+    content: " ";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    height: 2px;
+    margin-left: 12px;
+    width: calc(100% - 24px);
+    background-color: black;
+}
+
+#searchbox-main-input {
+    border: none;
+    border-radius: 0;
+    padding: 8px 6px;
+    position: relative;
+}
+
+#searchbox-main-input:focus {
+    box-shadow: none;
+}
+
+input[type=search]::-webkit-search-cancel-button {
+    display: none;
+}
+
+#title-search-icon {
+    border: none;
+    background-color: inherit;
+    color: black;
+    cursor: pointer;
+}
+
+.close-btn-container {
+    z-index: 1000;
+    position: absolute;
+    content: " ";
+    top: 0;
+    right: 52px;
+    width: 40px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.stick-container {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1px solid black;
+    background-color: black;
+    cursor: pointer;
+}
+
+.stick-container:hover {
+    background-color: white;
+
+    transition: 0.3s background-color;
+}
+
+.stick {
+    grid-area: 1 / 1 / 2 / 2;
+    height: 10px;
+    width: 2px;
+    background-color: white;
+
+    transition: 0.2s background-color;
+}
+
+.stick-container:hover .stick {
+    background-color: black;
+}
+
+.left-stick {
+    transform: rotate(45deg);
+}
+
+.right-stick {
+    transform: rotate(-45deg);
+}
+
+/* -------------------------------------------------------------------------- */
+/*	8. Pagination
+/* -------------------------------------------------------------------------- */
+.pagination {
+    display: flex;
+    justify-content: center;
+    height: 40px;
+}
+
+.pagination-item {
+    cursor: pointer;
+    height: 100%;
+    box-shadow: 0 3px 6px 1px rgb(20 20 20 / 15%);
+    transition: box-shadow 0.3s ease;
+}
+
+.pagination-item:hover {
+    box-shadow: 0 3px 10px 3px rgb(20 20 20 / 25%);
+}
+
+.pagination-item a {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    text-decoration: none;
+    color: black;
+    margin: 0 20px;
+    transition: transform 0.3s ease;
+}
+
+.pagination-item:hover a {
+    transform: scale(1.04);
+}
+
+.pagination-next {
+    background-color: black;
+    z-index: 9;
+}
+
+.pagination-next a {
+    color: white;
+}
+
+.pagination-prev {
+    background-color: white;
+    z-index: 10;
+}
+/* -------------------------------------------------------------------------- */
+/*	X. Default
+/* -------------------------------------------------------------------------- */
