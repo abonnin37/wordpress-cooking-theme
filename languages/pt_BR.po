@@ -1,0 +1,117 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: casalbbb\n"
+"POT-Creation-Date: 2022-07-24 19:45+0200\n"
+"PO-Revision-Date: 2022-07-24 19:55+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.1.1\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;_n\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: assets/search-ingredients.js:88 assets/search-ingredients.js:91
+#: assets/search-ingredients.js:95
+msgid "Aucun ingrédient n'a été trouvé pour la recherche : \""
+msgstr "Não foram encontrados ingredientes para a pesquisa: \""
+
+#: assets/search-ingredients.js:170
+msgid "En cours de recherche ..."
+msgstr "Por favor aguarde ..."
+
+#: index.php:25
+msgid "Pas de recettes"
+msgstr "Nenhuma receita encontrada"
+
+#: parts/pagination.php:4
+msgid "Recettes précédentes"
+msgstr "Receitas anteriores"
+
+#: parts/pagination.php:7
+msgid "Recettes suivantes"
+msgstr "Proximas receitas"
+
+#: parts/recipe-card.php:15
+msgid "Voir la recette"
+msgstr "Ver a receita"
+
+#: parts/searchbox.php:13 parts/searchbox.php:14
+msgid "Que désirez-vous manger ?"
+msgstr "O que você gostaria de comer ?"
+
+#: parts/searchbox.php:26
+msgid "Plus de filtres"
+msgstr "Mais filtros"
+
+#: parts/searchbox.php:31
+msgid "Effacer les filtres"
+msgstr "Excluir filtros"
+
+#: parts/searchbox.php:41
+msgid "Type de plat :"
+msgstr "Tipo de prato:"
+
+#: parts/searchbox.php:45 parts/searchbox.php:69
+msgid "Tous"
+msgstr "Todos"
+
+#: parts/searchbox.php:65
+msgid "Pays d'origine :"
+msgstr "País de origem:"
+
+#: parts/searchbox.php:90
+msgid "Régime spéciaux :"
+msgstr "Dietas especiais:"
+
+#: parts/searchbox.php:112
+msgid "Rechercher un ingrédient :"
+msgstr "Procurar um ingrediente:"
+
+#: parts/searchbox.php:122
+msgid "Rechercher un ingrédient"
+msgstr "Procurar um ingrediente"
+
+#: parts/searchbox.php:136
+msgid "Chercher une recette"
+msgstr "Procurar uma receita"
+
+#: single-wprm_recipe.php:16
+msgid "Page d'accueil"
+msgstr "Página inicial"
+
+#: single-wprm_recipe.php:31
+msgid "Temps de préparation :"
+msgstr "Tempo de preparação:"
+
+#: single-wprm_recipe.php:36
+msgid "Temps de cuisson :"
+msgstr "Tempo de cozimento:"
+
+#: single-wprm_recipe.php:46
+msgid "Ingrédients"
+msgstr "Ingredientes"
+
+#: single-wprm_recipe.php:75
+msgid "Instructions"
+msgstr "Instruções"
+
+#: single-wprm_recipe.php:119
+msgid "Notes"
+msgstr "Notas"
+
+#: utils/utils.php:40
+msgid "~ pour "
+msgstr "~ para "
+
+#: utils/utils.php:46
+msgid " personnes"
+msgstr " pessoas"
+
+#: utils/utils.php:48
+msgid " personne"
+msgstr " pessoa"

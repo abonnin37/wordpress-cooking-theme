@@ -37,15 +37,15 @@ function getRecipeIcon ($course_taxonomies) {
 }
 
 function getRecipeServings ($servings, $servings_unit) {
-    $res = "~ pour ";
+    $res = __("~ pour ", 'casalbbb');
 
     if ($servings && count($servings) > 0) {
         $servings_unit_label = (count($servings_unit) > 0 && !empty($servings_unit[0])) ? " " . $servings_unit[0] : null;
 
         if ((int)$servings[0] > 1) {
-            $res .= $servings[0] . ($servings_unit_label ?? " personnes");
+            $res .= $servings[0] . ($servings_unit_label ?? __(" personnes", 'casalbbb'));
         } else {
-            $res .= $servings[0] . ($servings_unit_label ?? " personne");
+            $res .= $servings[0] . ($servings_unit_label ?? __(" personne", 'casalbbb'));
         }
     } else {
         return null;

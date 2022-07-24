@@ -13,7 +13,7 @@ $instructions_groups = unserialize($recipe_meta["wprm_instructions"][0]);
     <div class="single-recipe">
         <div class="single-recipe-image">
             <?php the_post_thumbnail('full');?>
-            <div class="single-recipe-homepage-btn">Page d'accueil</div>
+            <div class="single-recipe-homepage-btn"><?= __("Page d'accueil", 'casalbbb') ?></div>
         </div>
         <div class="single-recipe-header">
             <div class="recipe-category-icon">
@@ -28,12 +28,12 @@ $instructions_groups = unserialize($recipe_meta["wprm_instructions"][0]);
                 <div class="recipe-time-group">
                     <div class="recipe-time recipe-prep-time">
                         <i class="fa-regular fa-clock"></i>
-                        <span>Temps de préparation : </span>
+                        <span><?= __("Temps de préparation :", 'casalbbb') ?> </span>
                         <b><?= getRecipeTime($recipe_meta["wprm_prep_time"][0]) ?></b>
                     </div>
                     <div class="recipe-time recipe-cook-time">
                         <i class="fa-solid fa-temperature-full"></i>
-                        <span>Temps de cuisson : </span>
+                        <span><?= __("Temps de cuisson :", 'casalbbb') ?> </span>
                         <b><?= getRecipeTime($recipe_meta["wprm_cook_time"][0]) ?></b>
                     </div>
                 </div>
@@ -43,7 +43,7 @@ $instructions_groups = unserialize($recipe_meta["wprm_instructions"][0]);
             <div class="ingredients-section">
                 <div class="ingredients-header">
                     <div class="ingredients-title">
-                        Ingrédients
+                        <?= __("Ingrédients", 'casalbbb') ?>
                     </div>
                     <?php if (getRecipeServings($recipe_meta["wprm_servings"], $recipe_meta["wprm_servings_unit"])) :?>
                     <div class="ingredients-quantity">
@@ -72,7 +72,7 @@ $instructions_groups = unserialize($recipe_meta["wprm_instructions"][0]);
             <div class="instructions-section">
                 <div class="instructions-header">
                     <div class="instructions-title">
-                        Instructions
+                        <?= __("Instructions", 'casalbbb') ?>
                     </div>
                     <!-- Indicateur de temps
                     <div class="instructions-time-group">
@@ -116,7 +116,7 @@ $instructions_groups = unserialize($recipe_meta["wprm_instructions"][0]);
             <div class="notes-section">
                 <div class="notes-header">
                     <div class="notes-title">
-                        Notes
+                        <?= __("Notes", 'casalbbb') ?>
                     </div>
                 </div>
                 <div class="notes-content">

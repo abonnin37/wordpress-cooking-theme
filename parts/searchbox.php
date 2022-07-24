@@ -10,8 +10,8 @@
                         name="s"
                         class="form-control form-control-lg"
                         type="search" value="<?= get_search_query() ?>"
-                        placeholder="Que désirez-vous manger ?"
-                        aria-label="Que désirez-vous manger ?"
+                        placeholder="<?= __("Que désirez-vous manger ?", 'casalbbb') ?>"
+                        aria-label="<?= __("Que désirez-vous manger ?", 'casalbbb') ?>"
                         aria-describedby="title-search-icon"
                         autocomplete="off"
                 >
@@ -23,12 +23,12 @@
                 <h2 class="accordion-header" id="searchbox-accordion-header">
                     <button class="accordion-button <?= $isFilter ? "" : "collapsed" ?>" type="button" data-bs-toggle="collapse" data-bs-target="#searchbox-accordion-collapse" aria-expanded="<?= $isFilter ?>" aria-controls="searchbox-accordion-collapse">
                         <div class="filter-btn-container">
-                            <i class="fa-solid fa-filter"></i> Plus de filtres
+                            <i class="fa-solid fa-filter"></i> <?= __("Plus de filtres", 'casalbbb') ?>
                         </div>
                     </button>
                     <div class="resetBtn" id="resetBtn">
                         <div class="resetBtnGroup">
-                            <span>Reset</span><i class="fa-solid fa-arrow-rotate-left"></i>
+                            <span><?= __("Effacer les filtres", 'casalbbb') ?></span><i class="fa-solid fa-arrow-rotate-left"></i>
                         </div>
                     </div>
                 </h2>
@@ -38,11 +38,11 @@
                             <div class="col">
                                 <div class="row">
                                     <div class="col-auto d-flex align-items-center">
-                                        <label for="wprm_course" class="form-label mb-0">Type de plat : </label>
+                                        <label for="wprm_course" class="form-label mb-0"><?= __("Type de plat :", 'casalbbb') ?> </label>
                                     </div>
                                     <div class="col">
                                         <select id="wprm_course" name="wprm_course" class="form-select" aria-label="Type de plat">
-                                            <option value="">Tous</option>
+                                            <option value=""><?= __("Tous", 'casalbbb') ?></option>
                                             <?php
                                                 $recipe_types = get_terms([
                                                     'taxonomy' => 'wprm_course',
@@ -62,11 +62,11 @@
                             <div class="col">
                                 <div class="row">
                                     <div class="col-auto d-flex align-items-center">
-                                        <label for="wprm_cuisine" class="form-label mb-0">Pays d'origine : </label>
+                                        <label for="wprm_cuisine" class="form-label mb-0"><?= __("Pays d'origine :", 'casalbbb') ?> </label>
                                     </div>
                                     <div class="col">
                                         <select id="wprm_cuisine" name="wprm_cuisine" class="form-select" aria-label="Pays d'origine">
-                                            <option value="" selected>Tous</option>
+                                            <option value="" selected><?= __("Tous", 'casalbbb') ?></option>
                                             <?php
                                                 $countries = get_terms([
                                                     'taxonomy' => 'wprm_cuisine',
@@ -87,7 +87,7 @@
                         <div class="special-regime-container mb-4">
                             <input type="hidden" id="wprm_keyword" name="wprm_keyword" value="<?= get_query_var('wprm_keyword')?>">
                             <div class="special-regime-title">
-                                Régime spéciaux :
+                                <?= __("Régime spéciaux :", 'casalbbb') ?>
                             </div>
                             <div class="special-regime-item-list">
                                 <?php
@@ -109,7 +109,7 @@
                             <div class="ingredients-search-field-container row  mb-2">
                                 <div class="ingredients-label col-sm-2">
                                     <label for="ingredients-input">
-                                        Rechercher un ingrédient :
+                                        <?= __("Rechercher un ingrédient :", 'casalbbb') ?>
                                     </label>
                                 </div>
                                 <div id='ingredients-input-container' class="ingredients-input-container col-sm-auto">
@@ -119,7 +119,7 @@
                                                 class="form-control"
                                                 type="search"
                                                 list=""
-                                                placeholder="Rechercher un ingrédient"
+                                                placeholder="<?= __("Rechercher un ingrédient", 'casalbbb') ?>"
                                                 autocomplete="off">
                                         <datalist id="ingredient-list">
                                         </datalist>
@@ -133,7 +133,7 @@
                             </div>
                         </div>
                         <div class="d-grid">
-                            <button type="submit" class="search-btn btn btn-secondary" id="filter-submit">Chercher une recette</button>
+                            <button type="submit" class="search-btn btn btn-secondary" id="filter-submit"><?= __("Chercher une recette", 'casalbbb') ?></button>
                         </div>
                     </div>
                 </div>

@@ -63,7 +63,7 @@ const getIngredientListFromWordpressApi = () => {
     const ingredientInput = document.getElementById('ingredients-input');
     const ingredientList = document.getElementById('ingredient-list');
 
-    fetch('http://dev-casalbbb.com/wp-json/casalbbb/v1/taxonomies-by-name?name='+ ingredientInput.value +'&selected_ingredients='+ ingredientsListToSearch.join(','), {
+    fetch('http://' + window.location.hostname + '/wp-json/casalbbb/v1/taxonomies-by-name?name='+ ingredientInput.value +'&selected_ingredients='+ ingredientsListToSearch.join(','), {
         method: 'GET'
     })
         .then(response => response.json())
@@ -85,14 +85,14 @@ const getIngredientListFromWordpressApi = () => {
                         ingredientList.appendChild(newIngredientOption);
                     });
                 } else {
-                    addErrorMessageToIngredientList("Aucun ingrédient n'a été trouvé pour la recherche : \"" + ingredientInput.value + "\"");
+                    addErrorMessageToIngredientList(__("Aucun ingrédient n'a été trouvé pour la recherche : \"", 'casalbbb') + ingredientInput.value + "\"");
                 }
             } else {
-                addErrorMessageToIngredientList("Aucun ingrédient n'a été trouvé pour la recherche : \"" + ingredientInput.value + "\"");
+                addErrorMessageToIngredientList(__("Aucun ingrédient n'a été trouvé pour la recherche : \"", 'casalbbb') + ingredientInput.value + "\"");
             }
         })
         .catch(error => {
-            addErrorMessageToIngredientList("Aucun ingrédient n'a été trouvé pour la recherche : \"" + ingredientInput.value + "\"");
+            addErrorMessageToIngredientList(__("Aucun ingrédient n'a été trouvé pour la recherche : \"", 'casalbbb') + ingredientInput.value + "\"");
         });
 }
 
@@ -167,7 +167,7 @@ const getSpinner = () => {
 
     spinnerContainer.appendChild(spinnerEl);
     flexContainer.appendChild(spinnerContainer);
-    flexContainer.appendChild(document.createTextNode('En cours de recherche ...'))
+    flexContainer.appendChild(document.createTextNode(__('En cours de recherche ...', 'casalbbb')))
 
     return flexContainer;
 }

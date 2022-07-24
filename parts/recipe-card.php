@@ -12,7 +12,7 @@ $instructions = unserialize($recipe_meta["wprm_instructions"][0]);
     <div class="recipe-card-overlay">
         <div class="overlay-background"></div>
         <div class="overlay-text">
-            Voir la recette
+            <?= __("Voir la recette", 'casalbbb') ?>
         </div>
     </div>
     <div class="recipe-card-content">
