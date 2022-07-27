@@ -11,9 +11,14 @@
 	6.  Search ingredients Filter
 	7. 	Filter General Style
 	8. 	Pagination
+	9. 	Google Traduction Selector
 	X. 	Default
 
 ----------------------------------------------------------------------------- */
+.locale-selector {
+    display: none!important;
+}
+
 
 
 /* -------------------------------------------------------------------------- */
@@ -51,6 +56,7 @@ blockquote::after {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     padding: 20px 0;
     background-color: white;
     /*box-shadow: 0 4px 8px 2px rgb(40 40 40 / 20%);*/
@@ -71,8 +77,36 @@ blockquote::after {
     font-family: 'La Belle Aurore', cursive;
     font-size: 65px;
     color: black;
+    height: 60px;
 }
 
+.locale-selector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    width: 100%;
+    padding: 15px;
+}
+
+.locale-selector-item {
+    width: 30px;
+    height: 20px;
+    position: relative;
+    cursor: pointer;
+}
+
+.locale-selector-item svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
 /* -------------------------------------------------------------------------- */
 /*	2. Recipe Card
 /* -------------------------------------------------------------------------- */
@@ -415,6 +449,7 @@ blockquote::after {
     height: 100%;
     overflow: hidden;
     opacity: 0;
+    width: fit-content;
 
     font-size: 14px;
     font-weight: normal;
@@ -782,6 +817,18 @@ input[type=search]::-webkit-search-cancel-button {
     background-color: white;
     z-index: 10;
 }
+/* -------------------------------------------------------------------------- */
+/*	9. Google Traduction Selector
+/* -------------------------------------------------------------------------- */
+#flags {
+    width: fit-content!important;
+}
+
+#sortable {
+    display: flex;
+    gap: 15px;
+}
+
 /* -------------------------------------------------------------------------- */
 /*	X. Default
 /* -------------------------------------------------------------------------- */

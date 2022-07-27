@@ -111,6 +111,7 @@ function casalbbb_pre_get_post (WP_Query $query) {
 
 // On ajoute les champs de recherche ici
 function casalbbb_query_vars ($params) {
+    $params[] = 'locale';
     $params[] = 'wprm_course';
     $params[] = 'wprm_cuisine';
     $params[] = 'wprm_keyword';
@@ -127,3 +128,11 @@ add_action('query_vars', 'casalbbb_query_vars');
 add_action('after_setup_theme', function () {
     load_theme_textdomain('casalbbb', get_template_directory() . '/languages');
 });
+
+/**
+ * Removes or edits the 'Protected:' part from posts titles
+ */
+add_filter( 'protected_title_format', 'remove_protected_text' );
+function remove_protected_text() {
+    return __('%s');
+}
