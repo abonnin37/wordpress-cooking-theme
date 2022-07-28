@@ -19,8 +19,6 @@
     display: none!important;
 }
 
-
-
 /* -------------------------------------------------------------------------- */
 
 /*	0. CSS Reset
@@ -59,6 +57,7 @@ blockquote::after {
     flex-direction: column;
     padding: 20px 0;
     background-color: white;
+    text-align: center;
     /*box-shadow: 0 4px 8px 2px rgb(40 40 40 / 20%);*/
 }
 
@@ -107,9 +106,24 @@ blockquote::after {
     width: 100%;
     object-fit: contain;
 }
+
+@media (max-width: 575.98px) {
+    .navbar-link {
+        height: inherit;
+    }
+    .navbar-title {
+        font-size: 55px;
+        height: inherit;
+    }
+}
 /* -------------------------------------------------------------------------- */
 /*	2. Recipe Card
 /* -------------------------------------------------------------------------- */
+.recipes-container > .row {
+    row-gap: 40px;
+    justify-content: center;
+}
+
 .permalink {
     text-decoration: none;
     color: inherit;
@@ -492,6 +506,12 @@ blockquote::after {
     transition: transform 0.5s ease;
 }
 
+@media (max-width: 575.98px) {
+    .recipe-type-country {
+        row-gap: 20px;
+    }
+}
+
 /* -------------------------------------------------------------------------- */
 /*	5. Special Regime Filter
 /* -------------------------------------------------------------------------- */
@@ -551,6 +571,19 @@ blockquote::after {
     width: 14px;
     color: inherit;
     transform: scaleX(1);
+}
+
+@media (max-width: 575.98px) {
+    .special-regime-item {
+        margin: 5px;
+        padding: 8px;
+        font-size: 15px;
+        border-radius: 10px;
+    }
+
+    .special-regime-item:nth-child(1) {
+        margin-left: 5px;
+    }
 }
 
 /* -------------------------------------------------------------------------- */
@@ -816,6 +849,10 @@ input[type=search]::-webkit-search-cancel-button {
 .pagination-prev {
     background-color: white;
     z-index: 10;
+}
+
+@media (max-width: var(--mobileBreakpoint)) {
+
 }
 /* -------------------------------------------------------------------------- */
 /*	9. Google Traduction Selector

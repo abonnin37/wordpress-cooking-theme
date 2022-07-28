@@ -8,7 +8,7 @@
     <?php if (have_posts()): ?>
         <div class="row">
             <?php while(have_posts()) : the_post() ?>
-                <div class="col-sm-3">
+                <div class="col-xl-3 col-md-4 col-sm-6">
                     <a class="permalink" href="<?= get_permalink()?>">
                         <?php
                         get_template_part('parts/recipe-card', 'post')

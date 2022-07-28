@@ -2,7 +2,7 @@
     $isFilter = get_query_var('wprm_course') || get_query_var('wprm_cuisine') || get_query_var('wprm_keyword') || get_query_var('wprm_ingredient');
 ?>
 
-<form id="searchbox" class="searchbox my-5" action="/">
+<form id="searchbox" class="searchbox mt-4 mb-3" action="/">
         <div class="row mb-3">
             <div class="input-group searchbox-main-input-container" id="searchbox-main-input-container">
                 <input
@@ -35,12 +35,12 @@
                 <div id="searchbox-accordion-collapse" class="accordion-collapse collapse <?= $isFilter ? "show" : "" ?>" aria-labelledby="searchbox-accordion-header" data-bs-parent="#searchbox-accordion">
                     <div class="accordion-body">
                         <div class="recipe-type-country row mb-4">
-                            <div class="col">
+                            <div class="col-sm-6">
                                 <div class="row">
-                                    <div class="col-auto d-flex align-items-center">
+                                    <div class="col-5 col-sm-auto d-flex align-items-center">
                                         <label for="wprm_course" class="form-label mb-0"><?= __("Type de plat :", 'casalbbb') ?> </label>
                                     </div>
-                                    <div class="col">
+                                    <div class="col-7 col-sm">
                                         <select id="wprm_course" name="wprm_course" class="form-select" aria-label="Type de plat">
                                             <option value=""><?= __("Tous", 'casalbbb') ?></option>
                                             <?php
@@ -59,12 +59,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col">
+                            <div class="col-sm-6">
                                 <div class="row">
-                                    <div class="col-auto d-flex align-items-center">
+                                    <div class="col-5 col-sm-auto d-flex align-items-center">
                                         <label for="wprm_cuisine" class="form-label mb-0"><?= __("Pays d'origine :", 'casalbbb') ?> </label>
                                     </div>
-                                    <div class="col">
+                                    <div class="col-7 col-sm">
                                         <select id="wprm_cuisine" name="wprm_cuisine" class="form-select" aria-label="Pays d'origine">
                                             <option value="" selected><?= __("Tous", 'casalbbb') ?></option>
                                             <?php
