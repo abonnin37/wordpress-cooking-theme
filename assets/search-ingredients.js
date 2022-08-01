@@ -63,7 +63,7 @@ const getIngredientListFromWordpressApi = () => {
     const ingredientInput = document.getElementById('ingredients-input');
     const ingredientList = document.getElementById('ingredient-list');
 
-    fetch('http://' + window.location.hostname + '/wp-json/casalbbb/v1/taxonomies-by-name?name='+ ingredientInput.value +'&selected_ingredients='+ ingredientsListToSearch.join(','), {
+    fetch('https://' + window.location.hostname + '/wp-json/casalbbb/v1/taxonomies-by-name?name='+ ingredientInput.value +'&selected_ingredients='+ ingredientsListToSearch.join(','), {
         method: 'GET'
     })
         .then(response => response.json())
