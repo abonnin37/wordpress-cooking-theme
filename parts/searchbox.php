@@ -105,7 +105,7 @@
                             </div>
                         </div>
                         <div class="ingredients-container mb-4">
-                            <input type="hidden" id="wprm_ingredient" name="wprm_ingredient" value="<?= get_query_var('wprm_ingredient')?>">
+                            <input type="hidden" id="wprm_ingredient" name="wprm_ingredient" value="<?= htmlspecialchars(get_query_var('wprm_ingredient'))?>">
                             <div class="ingredients-search-field-container row  mb-2">
                                 <div class="ingredients-label col-sm-2">
                                     <label for="ingredients-input">

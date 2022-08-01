@@ -62,10 +62,14 @@ function getRecipeIngredientLine ($ingredient) {
     }
 
     if ($ingredient["unit"]) {
-        $res .= $ingredient["unit"] . " ";
+        $res .= $ingredient["unit"] . " " . __("de", "casalbbb") . " ";
     }
 
-    $res .= $ingredient["name"];
+    $res .= !$ingredient["amount"] ? ucfirst($ingredient["name"]) : $ingredient["name"];
+
+    if ($ingredient["notes"]) {
+        $res .= " <i style='font-size: 13px;'>(" . $ingredient["notes"] . ")</i>";
+    }
 
     return $res;
 }

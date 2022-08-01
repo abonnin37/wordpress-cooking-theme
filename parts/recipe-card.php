@@ -7,7 +7,11 @@ $instructions = unserialize($recipe_meta["wprm_instructions"][0]);
 ?>
 <div class="recipe-card">
     <div class="recipe-card-image">
-        <?php the_post_thumbnail('medium');?>
+        <?php if (get_the_post_thumbnail()) : ?>
+            <?php the_post_thumbnail('medium'); ?>
+        <?php else: ?>
+            <div class="recipe-card-empty-thumbnail"></div>
+        <?php endif; ?>
     </div>
     <div class="recipe-card-overlay">
         <div class="overlay-background"></div>

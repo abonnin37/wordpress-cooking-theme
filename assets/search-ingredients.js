@@ -23,7 +23,7 @@ const addIngredient = (ingredientName, ingredientsTermsList, ingredientHiddenInp
     let newIngredientElement = document.createElement('li');
     newIngredientElement.classList.add("ingredient-term");
     newIngredientElement.id = "ingredient-term-" + getSlugFromIngredientName(ingredientName);
-    newIngredientElement.appendChild(document.createTextNode(ingredientName));
+    newIngredientElement.innerHTML = ingredientName;
     newIngredientElement.appendChild(newIngredientCloseElement);
 
     // Add new ingredient element to the ingredient list
@@ -63,7 +63,7 @@ const getIngredientListFromWordpressApi = () => {
     const ingredientInput = document.getElementById('ingredients-input');
     const ingredientList = document.getElementById('ingredient-list');
 
-    fetch('https://' + window.location.hostname + '/wp-json/casalbbb/v1/taxonomies-by-name?name='+ ingredientInput.value +'&selected_ingredients='+ ingredientsListToSearch.join(','), {
+    fetch('http://' + window.location.hostname + '/wp-json/casalbbb/v1/taxonomies-by-name?name='+ ingredientInput.value +'&selected_ingredients='+ ingredientsListToSearch.join(','), {
         method: 'GET'
     })
         .then(response => response.json())
@@ -76,8 +76,7 @@ const getIngredientListFromWordpressApi = () => {
                         // New ingredient element
                         let newIngredientOption = document.createElement('option');
                         newIngredientOption.value = ingredientName;
-                        const ingredientText = document.createTextNode(ingredientName);
-                        newIngredientOption.appendChild(ingredientText);
+                        newIngredientOption.innerHTML = ingredientName;
 
                         addIngredientToSearchList(newIngredientOption);
 
@@ -97,6 +96,24 @@ const getIngredientListFromWordpressApi = () => {
 }
 
 /**
+ * Replace some caracters by ASCII code
+ *
+ * @param text Text to check
+ * @returns {*} Text with special caracters changed
+ */
+const escapeHtml = (text) => {
+    const map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+    };
+
+    return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+}
+
+/**
  * Add ingredient to the search list with a click event listener
  *
  * @param ingredientEl Option element that contain the value of the ingredient
@@ -111,7 +128,8 @@ const addIngredientToSearchList = (ingredientEl) => {
 
         if (ingredientIndex < 0) {
             addIngredient(ingredientEl.innerText, ingredientsTermsList, ingredientsHiddenInput);
-            ingredientsListToSearch.push(ingredientEl.innerText);
+            // We escape html of ingredientEl.innerText because the plugin WPRM store ingredients with ASCII code
+            ingredientsListToSearch.push(escapeHtml(ingredientEl.innerText));
 
             // Update hidden input field
             ingredientsHiddenInput.value = ingredientsListToSearch.join(',');
