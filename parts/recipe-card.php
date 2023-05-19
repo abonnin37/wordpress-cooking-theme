@@ -8,7 +8,7 @@ $instructions = unserialize($recipe_meta["wprm_instructions"][0]);
 <div class="recipe-card">
     <div class="recipe-card-image">
         <?php if (get_the_post_thumbnail()) : ?>
-            <?php the_post_thumbnail('medium'); ?>
+            <?php the_post_thumbnail('medium_large'); ?>
         <?php else: ?>
             <div class="recipe-card-empty-thumbnail"></div>
         <?php endif; ?>
