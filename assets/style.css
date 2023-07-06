@@ -475,7 +475,7 @@ blockquote::after {
     height: 100%;
     overflow: hidden;
     opacity: 0;
-    width: fit-content;
+    width: 100%;
 
     font-size: 14px;
     font-weight: normal;
