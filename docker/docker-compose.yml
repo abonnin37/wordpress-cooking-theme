@@ -1,0 +1,40 @@
+services:
+  dev-cuisine-wordpress:
+    container_name: dev-cuisine-wordpress
+    image: wordpress
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: ${WORDPRESS_DB_HOST}
+      WORDPRESS_DB_USER: ${WORDPRESS_DB_USER}
+      WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+      WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME}
+    volumes:
+      - ./volume_data:/var/www/html
+    command: >
+      bash -c "
+      apt-get update && apt-get install -y git curl less && 
+      curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar &&
+      chmod +x wp-cli.phar &&
+      mv wp-cli.phar /usr/local/bin/wp &&
+      docker-entrypoint.sh apache2-foreground &
+      sleep 20 &&
+      if [ ! -d '/var/www/html/wp-content/themes/wordpress-cooking-theme' ]; then
+        git clone https://github.com/abonnin37/wordpress-cooking-theme.git /var/www/html/wp-content/themes/wordpress-cooking-theme &&
+        chown -R www-data:www-data /var/www/html/wp-content/themes/wordpress-cooking-theme &&
+        wp theme activate wordpress-cooking-theme --allow-root
+      fi &&
+      wait
+      "
+    networks:
+      - traefik_default
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.dev-cuisine-wordpress.rule=Host(`dev.cuisine.alexandrebonnin.fr`)"
+      - "traefik.http.routers.dev-cuisine-wordpress.entrypoints=web,websecure"
+      - "traefik.http.services.dev-cuisine-wordpress.loadbalancer.server.port=80"
+      - "traefik.http.routers.dev-cuisine-wordpress.tls=true"
+      - "traefik.http.routers.dev-cuisine-wordpress.tls.certresolver=production"
+
+networks:
+  traefik_default:
+    external: true
