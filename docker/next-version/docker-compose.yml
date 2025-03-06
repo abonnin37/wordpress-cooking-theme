@@ -1,0 +1,25 @@
+services:
+  dev-cuisine-wordpress:
+    container_name: dev-cuisine-wordpress
+    image: repository.alexandrebonnin.fr/dev-cuisine-wordpress:latest
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: ${WORDPRESS_DB_HOST}
+      WORDPRESS_DB_USER: ${WORDPRESS_DB_USER}
+      WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+      WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME}
+    volumes:
+      - ./volume_data:/var/www/html
+    networks:
+      - traefik_default
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.dev-cuisine-wordpress.rule=Host(`dev.cuisine.alexandrebonnin.fr`)"
+      - "traefik.http.routers.dev-cuisine-wordpress.entrypoints=web,websecure"
+      - "traefik.http.services.dev-cuisine-wordpress.loadbalancer.server.port=80"
+      - "traefik.http.routers.dev-cuisine-wordpress.tls=true"
+      - "traefik.http.routers.dev-cuisine-wordpress.tls.certresolver=production"
+
+networks:
+  traefik_default:
+    external: true
